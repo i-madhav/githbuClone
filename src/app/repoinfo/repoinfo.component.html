@@ -1,0 +1,48 @@
+<div class="card p-10">
+    <!-- Display repo data -->
+    <ul class="repo-item flex justify-centre flex-col" *ngIf="!loadingRepoData">
+      <li *ngFor="let repo of informationRepo" class="repo-list border border-gray-300 rounded-md p-5 w-1/2">
+        <div class="repo-name flex justify-between items-center mb-5">
+          <h3>{{ repo?.name }}</h3>
+          <span *ngIf="repo.private" class="border border-gray-300 px-2 py-1 rounded-md">private</span>
+          <span *ngIf="!repo.private" class="border border-gray-300 px-2 py-1 rounded-md">public</span>
+        </div>
+        <div class="code">
+          <p class="inline-block bg-blue-500 text-white px-3 py-1 rounded-md">{{ repo?.language }}</p>
+        </div>
+      </li>
+    </ul>
+    <app-pagination
+      [totalItems]="totalItems"
+      [pageSize]="pageSize"
+      (pageChanged)="onPageChanged($event)"
+    ></app-pagination>
+  </div>
+  
+  
+  <div *ngIf="loadingRepoData" class="skeleton-loader">
+    <ul class="o-vertical-spacing o-vertical-spacing--l">
+      <li class="blog-post o-media">
+        <div class="o-media__figure">
+          <span class="skeleton-box w-100 h-80"></span>
+        </div>
+        <div class="o-media__body">
+          <div class="o-vertical-spacing">
+            <h3 class="blog-post__headline">
+              <span class="skeleton-box w-55"></span>
+            </h3>
+            <p>
+              <span class="skeleton-box w-80"></span>
+              <span class="skeleton-box w-90"></span>
+              <span class="skeleton-box w-83"></span>
+              <span class="skeleton-box w-80"></span>
+            </p>
+            <div class="blog-post__meta">
+              <span class="skeleton-box w-70"></span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div> 
+  

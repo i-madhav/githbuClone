@@ -1,0 +1,59 @@
+<nav class="search bg-gray-900 p-5">
+    <div class="search-input flex justify-center items-center mx-auto w-3/4">
+      <input type="search" placeholder="search" name="search" class="input w-1/2 px-4 py-2 rounded-lg border border-gray-400 focus:outline-none focus:border-gray-500 text-white bg-transparent" [(ngModel)]="searchTerm" />
+      <button (click)="searchGithubProfile()" class="ml-2 px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white">Submit</button>
+    </div>
+  </nav>
+  
+  <main class="main-container bg-gray-900 text-gray-300 p-5">
+    <div *ngIf="!loadingGithubData" class="personal-info">
+      <div class="logo-name flex items-center gap-4">
+        <div class="logo w-16 h-16 rounded-full overflow-hidden">
+          <img src="{{ githubData?.avatar_url }}" alt="personal-pic" class="w-full h-full object-cover" />
+        </div>
+  
+        <div class="info">
+          <h2>{{ githubData.name }}</h2>
+          <p>{{ githubData.login }}</p>
+        </div>
+      </div>
+  
+      <div class="rest-info">
+        <div class="bio">
+          <p>{{ githubData.bio }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="loadingGithubData" class="skeleton-loader">
+      <ul class="o-vertical-spacing o-vertical-spacing--l">
+        <li class="blog-post o-media">
+          <div class="o-media__figure">
+            <span class="skeleton-box w-24 h-20"></span>
+          </div>
+          <div class="o-media__body">
+            <div class="o-vertical-spacing">
+              <h3 class="blog-post__headline">
+                <span class="skeleton-box w-1/2"></span>
+              </h3>
+              <p>
+                <span class="skeleton-box w-3/4"></span>
+                <span class="skeleton-box w-5/6"></span>
+                <span class="skeleton-box w-83"></span>
+                <span class="skeleton-box w-3/4"></span>
+              </p>
+              <div class="blog-post__meta">
+                <span class="skeleton-box w-16"></span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <main class="repo bg-gray-900 text-yellow-500 p-5">
+    <h2 class="ml-15">Popular repositories : {{ githubData.public_repos }}</h2>
+    <app-repoinfo [repoData]="githubData.login"></app-repoinfo>
+  </main>
+    
