@@ -11,4 +11,4 @@ import { MatTableModule } from '@angular/material/table';;
 * the above step is to install pagination 
 
 ## Development server
-
+* deployment link : https://i-madhav.github.io/fyle-internship-challenge-23-master/
