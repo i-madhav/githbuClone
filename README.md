@@ -12,3 +12,4 @@ import { MatTableModule } from '@angular/material/table';;
 
 ## Development server
 
+* deployed link : https://i-madhav.github.io/fyle-internship-challenge-23-master/
